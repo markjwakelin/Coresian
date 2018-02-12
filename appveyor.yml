@@ -1,0 +1,44 @@
+version: 1.1.{build}
+skip_tags: true
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+before_build:
+- ps: nuget restore
+build:
+  project: Coresian.sln
+  publish_nuget: true
+  verbosity: minimal
+before_package:
+- ps: >-
+    Set-Location -Path "C:\projects\coresian\Coresian\bin"
+
+    New-Item -ItemType directory -Path "Any CPU"
+
+    Copy-Item "Release" "Any CPU" -recurse
+after_build:
+- ps: >-
+    Set-Location -Path "C:\projects\coresian\Coresian.UnitTests\bin"
+
+    New-Item -ItemType directory -Path "Any CPU"
+
+    Copy-Item "Release" "Any CPU" -recurse
+deploy:
+- provider: NuGet
+  api_key:
+    secure: tWXpKD4y8ggiDkQfyTc8zt4wQS8Fa4khSE9ETmC8Yp6YLOsA2kF2Dpde1F4ZHZYU
+  on:
+    branch: master
+- provider: GitHub
+  auth_token:
+    secure: Q8uS9Onj7HxkERPJ7IbO3smZsK8JP1SDpDsYlpYM9sasIC7bk3I+UQbiHsnyAhuP
+  on:
+    branch: master

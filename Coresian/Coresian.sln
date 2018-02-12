@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Coresian", "Lib.Coresian\Lib.Coresian.csproj", "{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coresian", "Coresian\Coresian.csproj", "{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

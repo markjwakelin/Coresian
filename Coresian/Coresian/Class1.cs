@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lib.Coresian
+namespace Coresian
 {
     public class Class1
     {
