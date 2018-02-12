@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Coresian", "Lib.Coresian\Lib.Coresian.csproj", "{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40FB140F-6A50-4AB1-99C3-AAE49A1AB97D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
