@@ -1,19 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <Version>1.0.0</Version>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <FileVersion>1.0.0</FileVersion>
-        <ProductVersion>1.0.0</ProductVersion>
-        <PackageVersion>1.0.0</PackageVersion>
-        <Authors>Andrew Duff &amp; Matthew Malkin</Authors>
-        <Copyright>Copyright © 2017 Andrew Duff &amp; Matthew Malkin</Copyright>
-        <Description>.NET library for abstractions and other things to aid with .net development.</Description>
-        <PackageTags>corsian, coresian, coreextensions, core extensions, abstractions, extensions</PackageTags>
-        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageId>Coresian</PackageId>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/CodeConceptsUk/Coresian/master/LICENSE</PackageLicenseUrl>
-        <PackageProjectUrl>https://github.com/CodeConceptsUk/Coresian</PackageProjectUrl>
-        <Product>Coresian</Product>
-    </PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <ProductVersion>1.0.0</ProductVersion>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Andrew Duff &amp; Matthew Malkin</Authors>
+    <Copyright>Copyright © 2017 Andrew Duff &amp; Matthew Malkin</Copyright>
+    <Description>.NET library for abstractions and other things to aid with .net development.</Description>
+    <PackageTags>corsian, coresian, coreextensions, core extensions, abstractions, extensions</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Coresian</PackageId>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/CodeConceptsUk/Coresian/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/CodeConceptsUk/Coresian</PackageProjectUrl>
+    <Product>Coresian</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Abstractions" />
+  </ItemGroup>
 </Project>
