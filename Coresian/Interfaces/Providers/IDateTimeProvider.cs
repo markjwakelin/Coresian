@@ -4,8 +4,8 @@ namespace Coresian.Interfaces.Providers
 {
     public interface IDateTimeProvider
     {
-        DateTime GetLocalTime();
+        DateTime GetLocal();
 
-        DateTime GetUtcTime();
+        DateTime GetUtc();
     }
 }

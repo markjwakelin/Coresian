@@ -13,7 +13,7 @@ namespace Coresian.UnitTests.Providers
             var target = new DateTimeProvider();
             
             var timeBefore = DateTime.Now;
-            var result = target.GetLocalTime();
+            var result = target.GetLocal();
             var timeAfter = DateTime.Now;
 
             Assert.InRange(result, timeBefore, timeAfter);
@@ -25,7 +25,7 @@ namespace Coresian.UnitTests.Providers
             var target = new DateTimeProvider();
             
             var timeBefore = DateTime.UtcNow;
-            var result = target.GetUtcTime();
+            var result = target.GetUtc();
             var timeAfter = DateTime.UtcNow;
 
             Assert.InRange(result, timeBefore, timeAfter);

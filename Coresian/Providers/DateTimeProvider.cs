@@ -5,12 +5,12 @@ namespace Coresian.Providers
 {
     public class DateTimeProvider : IDateTimeProvider
     {
-        public DateTime GetLocalTime()
+        public DateTime GetLocal()
         {
             return DateTime.Now.ToLocalTime();
         }
 
-        public DateTime GetUtcTime()
+        public DateTime GetUtc()
         {
             return DateTime.Now.ToUniversalTime();
         }
