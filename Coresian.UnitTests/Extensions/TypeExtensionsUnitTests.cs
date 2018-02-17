@@ -81,11 +81,11 @@ namespace Coresian.UnitTests.Extensions
      
         public static List<object[]> InstanceTestData = new List<object[]>()
         {
-            new object[] { new object(), typeof(object), true },
-            new object[] { new object(), typeof(Type), false },
+            new[] { new object(), typeof(object), true },
+            new[] { new object(), typeof(Type), false },
             new object[] { typeof(object), typeof(object), true },
             new object[] { new TestObject(), typeof(object), true },
-            new object[] { new object(), typeof(TestObject), false },
+            new[] { new object(), typeof(TestObject), false },
             new object[] { new TestInterfaceImplementation(), typeof(ITestInterface), true },
             new object[] { new TestInterfaceImplementation(), typeof(ITestInterface<TestObject>), true },
             new object[] { new TestInterfaceImplementation(), typeof(ITestInterface<object>), false },
@@ -108,14 +108,19 @@ namespace Coresian.UnitTests.Extensions
             
         }
 
-        public interface ITestInterface<T>
+        public interface ITestInterface<out T>
         {
-            
+            T Thing { get; }
         }
 
         public class TestInterfaceImplementation : ITestInterface, ITestInterface<TestObject>
         {
-            
+            public TestInterfaceImplementation()
+            {
+                Thing = new TestObject();
+            }
+
+            public TestObject Thing { get; }
         }
     }
 }

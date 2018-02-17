@@ -10,7 +10,7 @@ namespace Coresian.Extensions
                 throw new ArgumentNullException(nameof(thisType));
             if(givenType == null)
                 throw new ArgumentNullException(nameof(givenType));
-            throw new NotImplementedException();
+            return givenType.IsAssignableFrom(thisType);
         }
 
         public static bool CanBeCastAs(this object thisObject, Type givenType)
