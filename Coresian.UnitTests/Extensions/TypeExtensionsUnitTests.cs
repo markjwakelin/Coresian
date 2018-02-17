@@ -144,7 +144,6 @@ namespace Coresian.UnitTests.Extensions
             
             public void Whatever(TestObject thing)
             {
-                throw new NotImplementedException();
             }
         }
     }
