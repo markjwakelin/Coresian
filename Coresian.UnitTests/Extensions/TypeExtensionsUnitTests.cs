@@ -59,5 +59,63 @@ namespace Coresian.UnitTests.Extensions
                 Assert.Equal("givenType", ane.ParamName);
             }
         }
+
+        public static List<object[]> TypeTestData = new List<object[]>()
+        {
+            new object[] { typeof(object), typeof(object), true },
+            new object[] { typeof(object), typeof(Type), false },
+            new object[] { typeof(Type), typeof(object), true },
+            new object[] { typeof(TestObject), typeof(object), true },
+            new object[] { typeof(object), typeof(TestObject), false },
+            new object[] { typeof(TestInterfaceImplementation), typeof(ITestInterface), true },
+            new object[] { typeof(TestInterfaceImplementation), typeof(ITestInterface<TestObject>), true },
+            new object[] { typeof(TestInterfaceImplementation), typeof(ITestInterface<object>), false },
+        };
+        
+        [Theory]
+        [MemberData(nameof(TypeTestData), MemberType = typeof(TypeExtensionsUnitTests))]
+        public void Type_CanBeCastAsWorksAsExpected(Type givenType, Type targetType, bool expectedResult)
+        {
+            Assert.Equal(expectedResult, givenType.CanBeCastAs(targetType));
+        }
+     
+        public static List<object[]> InstanceTestData = new List<object[]>()
+        {
+            new object[] { new object(), typeof(object), true },
+            new object[] { new object(), typeof(Type), false },
+            new object[] { typeof(object), typeof(object), true },
+            new object[] { new TestObject(), typeof(object), true },
+            new object[] { new object(), typeof(TestObject), false },
+            new object[] { new TestInterfaceImplementation(), typeof(ITestInterface), true },
+            new object[] { new TestInterfaceImplementation(), typeof(ITestInterface<TestObject>), true },
+            new object[] { new TestInterfaceImplementation(), typeof(ITestInterface<object>), false },
+        };
+        
+        [Theory]
+        [MemberData(nameof(InstanceTestData), MemberType = typeof(TypeExtensionsUnitTests))]
+        public void Instance_CanBeCastAsWorksAsExpected(object givenObject, Type targetType, bool expectedResult)
+        {
+            Assert.Equal(expectedResult, givenObject.CanBeCastAs(targetType));
+        }
+        
+        public class TestObject
+        {
+            
+        }
+
+        public interface ITestInterface
+        {
+            
+        }
+
+        public interface ITestInterface<T>
+        {
+            
+        }
+
+        public class TestInterfaceImplementation : ITestInterface, ITestInterface<TestObject>
+        {
+            
+        }
     }
 }
