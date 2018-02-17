@@ -67,9 +67,14 @@ namespace Coresian.UnitTests.Extensions
             new object[] { typeof(Type), typeof(object), true },
             new object[] { typeof(TestObject), typeof(object), true },
             new object[] { typeof(object), typeof(TestObject), false },
-            new object[] { typeof(TestInterfaceImplementation), typeof(ITestInterface), true },
-            new object[] { typeof(TestInterfaceImplementation), typeof(ITestInterface<TestObject>), true },
-            new object[] { typeof(TestInterfaceImplementation), typeof(ITestInterface<object>), false },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestInterface), true },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericInOutInterface<TestObject>), true },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericInInterface<TestObject>), true },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericOutInterface<TestObject>), true },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericInOutInterface<object>), false },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericInInterface<object>), false },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericOutInterface<object>), true },
+            new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericInOutInterface<>), false },
         };
         
         [Theory]
@@ -86,9 +91,14 @@ namespace Coresian.UnitTests.Extensions
             new object[] { typeof(object), typeof(object), true },
             new object[] { new TestObject(), typeof(object), true },
             new[] { new object(), typeof(TestObject), false },
-            new object[] { new TestInterfaceImplementation(), typeof(ITestInterface), true },
-            new object[] { new TestInterfaceImplementation(), typeof(ITestInterface<TestObject>), true },
-            new object[] { new TestInterfaceImplementation(), typeof(ITestInterface<object>), false },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestInterface), true },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericInOutInterface<TestObject>), true },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericInInterface<TestObject>), true },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericOutInterface<TestObject>), true },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericInOutInterface<object>), false },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericInInterface<object>), false },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericOutInterface<object>), true },
+            new object[] { new TestGenericInOutInterfaceImplementation(), typeof(ITestGenericInOutInterface<>), false },
         };
         
         [Theory]
@@ -108,19 +118,34 @@ namespace Coresian.UnitTests.Extensions
             
         }
 
-        public interface ITestInterface<out T>
+        public interface ITestGenericInOutInterface<T>
+        {
+            T Thing { get; set; }
+        }
+        
+        public interface ITestGenericOutInterface<out T>
         {
             T Thing { get; }
         }
-
-        public class TestInterfaceImplementation : ITestInterface, ITestInterface<TestObject>
+        
+        public interface ITestGenericInInterface<in T>
         {
-            public TestInterfaceImplementation()
+            void Whatever(T thing);
+        }
+
+        public class TestGenericInOutInterfaceImplementation : ITestInterface, ITestGenericInOutInterface<TestObject>, ITestGenericOutInterface<TestObject>, ITestGenericInInterface<TestObject>
+        {
+            public TestGenericInOutInterfaceImplementation()
             {
                 Thing = new TestObject();
             }
 
-            public TestObject Thing { get; }
+            public TestObject Thing { get; set; }
+            
+            public void Whatever(TestObject thing)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
