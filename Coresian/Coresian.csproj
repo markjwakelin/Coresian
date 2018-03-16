@@ -16,7 +16,4 @@
     <PackageProjectUrl>https://github.com/CodeConceptsUk/Coresian</PackageProjectUrl>
     <Product>Coresian</Product>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Abstractions" />
-  </ItemGroup>
 </Project>
