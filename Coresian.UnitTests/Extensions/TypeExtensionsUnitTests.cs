@@ -76,14 +76,30 @@ namespace Coresian.UnitTests.Extensions
             new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericOutInterface<object>), true },
             new object[] { typeof(TestGenericInOutInterfaceImplementation), typeof(ITestGenericInOutInterface<>), false },
         };
-        
+
         [Theory]
         [MemberData(nameof(TypeTestData), MemberType = typeof(TypeExtensionsUnitTests))]
         public void Type_CanBeCastAsWorksAsExpected(Type givenType, Type targetType, bool expectedResult)
         {
             Assert.Equal(expectedResult, givenType.CanBeCastAs(targetType));
         }
-     
+
+
+        public static List<object[]> GetDefaultTestData = new List<object[]>()
+        {
+            new object[] { typeof(string), null },
+            new object[] { typeof(int), 0 },
+            new object[] { typeof(bool), false },
+            new object[] { typeof(object), null },
+        };
+
+        [Theory]
+        [MemberData(nameof(GetDefaultTestData), MemberType = typeof(TypeExtensionsUnitTests))]
+        public void Type_GetDefaultWorksAsExpected(Type givenType, object expectedResult)
+        {
+            Assert.Equal(expectedResult, givenType.GetDefault());
+        }
+
         public static List<object[]> InstanceTestData = new List<object[]>()
         {
             new[] { new object(), typeof(object), true },

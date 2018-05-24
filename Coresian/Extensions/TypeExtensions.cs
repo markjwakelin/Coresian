@@ -19,5 +19,11 @@ namespace Coresian.Extensions
                 throw new ArgumentNullException(nameof(thisObject));
             return CanBeCastAs(thisObject.GetType(), givenType);
         }
+        public static object GetDefault(this Type type)
+        {
+            return type.IsValueType // else #ifdef std2.0 type.GetTypeInfo().IsValueType
+                ? Activator.CreateInstance(type)
+                : null;
+        }
     }
 }
