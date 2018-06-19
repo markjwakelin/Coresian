@@ -1,10 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using Coresian.Extensions;
 using Xunit;
 
 namespace Coresian.UnitTests.Extensions
 {
+    public class HttpClientExtensionsUnitTests
+    {
+        [Theory, AutoNSubstituteData]
+        public void WhenIAddCredentialsForBasicTheyAreAddedCorrectly(HttpClient httpClient, string username, string password)
+        {
+            const string expectedBasic = "Basic";
+            var expectedCredentialsString = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
+
+            httpClient.UseBasicAuth(username, password);
+
+            var authHeader = httpClient.DefaultRequestHeaders.Authorization;
+
+            Assert.Equal(expectedBasic, authHeader.Scheme);
+            Assert.Equal(expectedCredentialsString, authHeader.Parameter);
+        }
+    }
+
     public class TypeExtensionsUnitTests
     {
 
