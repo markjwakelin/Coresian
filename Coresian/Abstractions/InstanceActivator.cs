@@ -9,5 +9,10 @@ namespace Coresian.Abstractions
         {
             return Activator.CreateInstance(type);
         }
+
+        public object Activate(Type type, object[] constructorArguments)
+        {
+            return Activator.CreateInstance(type, constructorArguments);
+        }
     }
 }
