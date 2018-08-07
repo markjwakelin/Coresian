@@ -16,4 +16,7 @@
     <PackageProjectUrl>https://github.com/CodeConceptsUk/Coresian</PackageProjectUrl>
     <Product>Coresian</Product>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector.Packaging" Version="4.3.0" />
+  </ItemGroup>
 </Project>
