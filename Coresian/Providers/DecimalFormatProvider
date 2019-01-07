@@ -1,0 +1,9 @@
+public class DecimalFormatProvider : IDecimalFormatProvider
+  {
+    public string FormatToTwoDecimalPlaces(Decimal? value)
+    {
+      if (value.HasValue)
+        return Math.Round(value.Value, 2, MidpointRounding.AwayFromZero).ToString("0.00", (IFormatProvider) CultureInfo.InvariantCulture);
+      return string.Empty;
+    }
+  }
