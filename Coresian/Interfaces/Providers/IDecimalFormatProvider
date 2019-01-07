@@ -1,0 +1,1 @@
+string FormatToTwoDecimalPlaces(Decimal? value);
